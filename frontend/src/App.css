@@ -1,0 +1,186 @@
+/* Custom styles for the New Jersey Consolidation Analysis app */
+
+.App {
+  text-align: center;
+}
+
+/* Dark theme customizations */
+.MuiAppBar-root {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+.MuiCard-root {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+.MuiCard-root:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00d4ff;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #0099cc;
+}
+
+/* Map container styles */
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Loading animation */
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.loading-pulse {
+  animation: pulse 2s infinite;
+}
+
+/* Gradient text effect */
+.gradient-text {
+  background: linear-gradient(45deg, #00d4ff, #ff6b35);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Custom button styles */
+.custom-button {
+  background: linear-gradient(45deg, #00d4ff, #0099cc) !important;
+  border: none !important;
+  color: white !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  padding: 12px 24px !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+}
+
+.custom-button:hover {
+  background: linear-gradient(45deg, #0099cc, #007aa3) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3) !important;
+}
+
+/* Table customizations */
+.MuiTableContainer-root {
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+.MuiTableHead-root {
+  background: linear-gradient(90deg, #2d2d2d, #1a1a1a) !important;
+}
+
+.MuiTableCell-head {
+  color: #fff !important;
+  font-weight: 600 !important;
+  border-bottom: 2px solid #00d4ff !important;
+}
+
+.MuiTableRow-root:hover {
+  background-color: rgba(0, 212, 255, 0.1) !important;
+}
+
+/* Chart container styles */
+.chart-container {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .MuiContainer-root {
+    padding: 8px !important;
+  }
+  
+  .MuiCard-root {
+    margin-bottom: 16px !important;
+  }
+  
+  .map-container {
+    height: 400px;
+  }
+}
+
+/* Animation for cards */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in-up {
+  animation: slideInUp 0.6s ease-out;
+}
+
+/* Custom chip styles */
+.MuiChip-root {
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+
+.MuiChip-root:hover {
+  transform: scale(1.05) !important;
+}
+
+/* Alert customizations */
+.MuiAlert-root {
+  border-radius: 8px !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Tab customizations */
+.MuiTabs-root {
+  border-bottom: 2px solid rgba(0, 212, 255, 0.3) !important;
+}
+
+.MuiTab-root {
+  font-weight: 600 !important;
+  text-transform: none !important;
+  transition: all 0.3s ease !important;
+}
+
+.MuiTab-root.Mui-selected {
+  color: #00d4ff !important;
+}
+
+.MuiTabs-indicator {
+  background: linear-gradient(90deg, #00d4ff, #ff6b35) !important;
+  height: 3px !important;
+}

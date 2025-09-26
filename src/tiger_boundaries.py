@@ -670,7 +670,7 @@ class TIGERBoundaryCreator:
             return None
         
         try:
-            # Load the shapefile
+            # Load the shapefile directly
             gdf = gpd.read_file(shapefile_path)
             print(f"Loaded {len(gdf)} counties from TIGER/Line data")
             
@@ -684,6 +684,7 @@ class TIGERBoundaryCreator:
         except Exception as e:
             print(f"Error loading TIGER/Line county data: {e}")
             return None
+    
     
     def create_tiger_municipalities_map(self):
         """Create a map using municipal boundary data (NJ state data preferred)"""
@@ -722,7 +723,7 @@ class TIGERBoundaryCreator:
             # Convert geometry to GeoJSON
             # Use geometry directly - no need to convert to JSON
             
-            # Add polygon to map
+            # Add polygon to map with compact popup
             folium.GeoJson(
                 row.geometry,
                 style_function=lambda x, color=county_color: {
@@ -733,15 +734,15 @@ class TIGERBoundaryCreator:
                 },
                 popup=folium.Popup(
                     f"""
-                    <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>
-                        <h4 style='color: {county_color}; margin: 0 0 5px 0;'>{row['NAME']}</h4>
-                        <p style='margin: 2px 0;'><strong>County:</strong> {county_name}</p>
-                        <p style='margin: 2px 0;'><strong>Population:</strong> {row['population_2020']:,}</p>
-                        <p style='margin: 2px 0;'><strong>Area:</strong> {row['area_sq_miles']:.1f} sq mi</p>
-                        <p style='margin: 2px 0;'><strong>Density:</strong> {row['population_density']:.0f} people/sq mi</p>
+                    <div style='color: white; background: #2d2d2d; padding: 3px 5px; border-radius: 3px; width: 180px; font-size: 12px; margin: 0;'>
+                        <h4 style='color: {county_color}; margin: 0 0 2px 0; font-size: 13px; font-weight: bold; line-height: 1.2;'>{row['NAME']}</h4>
+                        <p style='margin: 0; font-size: 11px; line-height: 1.1;'><strong>County:</strong> {county_name}</p>
+                        <p style='margin: 0; font-size: 11px; line-height: 1.1;'><strong>Population:</strong> {row['population_2020']:,}</p>
+                        <p style='margin: 0; font-size: 11px; line-height: 1.1;'><strong>Area:</strong> {row['area_sq_miles']:.1f} sq mi</p>
+                        <p style='margin: 0; font-size: 11px; line-height: 1.1;'><strong>Density:</strong> {row['population_density']:.0f} people/sq mi</p>
                     </div>
                     """,
-                    max_width=300
+                    max_width=190
                 )
             ).add_to(m)
         
@@ -827,7 +828,7 @@ class TIGERBoundaryCreator:
             # Convert geometry to GeoJSON
             # Use geometry directly - no need to convert to JSON
             
-            # Add polygon to 5-county group
+            # Add polygon to 5-county group with compact popup
             folium.GeoJson(
                 row.geometry,
                 style_function=lambda x: {
@@ -838,16 +839,16 @@ class TIGERBoundaryCreator:
                 },
                 popup=folium.Popup(
                     f"""
-                    <div style='color: white; background: #2d2d2d; padding: 15px; border-radius: 5px; text-align: center;'>
-                        <h4 style='color: #00d4ff; margin: 0 0 10px 0;'>{county_name} County</h4>
-                        <p style='margin: 5px 0;'><strong>Population:</strong> {pop:,}</p>
-                        <p style='margin: 5px 0;'><strong>Area:</strong> {area:.1f} sq mi</p>
-                        <p style='margin: 5px 0;'><strong>Density:</strong> {density:.0f} people/sq mi</p>
-                        <p style='margin: 5px 0;'><strong>Municipalities:</strong> {muni_count}</p>
-                        <p style='margin: 10px 0 5px 0; font-size: 12px; color: #00d4ff;'>Part of 5-County Consolidation</p>
+                    <div style='color: white; background: #2d2d2d; padding: 3px 5px; border-radius: 3px; text-align: center; width: 180px; font-size: 12px; margin: 0;'>
+                        <h4 style='color: #00d4ff; margin: 0 0 2px 0; font-size: 13px; font-weight: bold; line-height: 1.2;'>{county_name} County</h4>
+                        <p style='margin: 0; font-size: 11px; line-height: 1.1;'><strong>Population:</strong> {pop:,}</p>
+                        <p style='margin: 0; font-size: 11px; line-height: 1.1;'><strong>Area:</strong> {area:.1f} sq mi</p>
+                        <p style='margin: 0; font-size: 11px; line-height: 1.1;'><strong>Density:</strong> {density:.0f} people/sq mi</p>
+                        <p style='margin: 0; font-size: 11px; line-height: 1.1;'><strong>Municipalities:</strong> {muni_count}</p>
+                        <p style='margin: 2px 0 0 0; font-size: 10px; color: #00d4ff; line-height: 1.1;'>Part of 5-County Consolidation</p>
                     </div>
                     """,
-                    max_width=300
+                    max_width=190
                 )
             ).add_to(five_county_group)
         
@@ -867,10 +868,7 @@ class TIGERBoundaryCreator:
                 else:
                     pop = area = density = muni_count = 0
                 
-                # Convert geometry to GeoJSON
-                # Use geometry directly - no need to convert to JSON
-                
-                # Add polygon to 3-county group
+                # Add polygon to 3-county group with compact popup
                 folium.GeoJson(
                     row.geometry,
                     style_function=lambda x: {
@@ -881,16 +879,16 @@ class TIGERBoundaryCreator:
                     },
                     popup=folium.Popup(
                         f"""
-                        <div style='color: white; background: #2d2d2d; padding: 15px; border-radius: 5px; text-align: center;'>
-                            <h4 style='color: #00ff88; margin: 0 0 10px 0;'>{county_name} County</h4>
-                            <p style='margin: 5px 0;'><strong>Population:</strong> {pop:,}</p>
-                            <p style='margin: 5px 0;'><strong>Area:</strong> {area:.1f} sq mi</p>
-                            <p style='margin: 5px 0;'><strong>Density:</strong> {density:.0f} people/sq mi</p>
-                            <p style='margin: 5px 0;'><strong>Municipalities:</strong> {muni_count}</p>
-                            <p style='margin: 10px 0 5px 0; font-size: 12px; color: #00ff88;'>Part of 3-County Core</p>
+                        <div style='color: white; background: #2d2d2d; padding: 3px 5px; border-radius: 3px; text-align: center; width: 180px; font-size: 12px; margin: 0;'>
+                            <h4 style='color: #00ff88; margin: 0 0 2px 0; font-size: 13px; font-weight: bold; line-height: 1.2;'>{county_name} County</h4>
+                            <p style='margin: 0; font-size: 11px; line-height: 1.1;'><strong>Population:</strong> {pop:,}</p>
+                            <p style='margin: 0; font-size: 11px; line-height: 1.1;'><strong>Area:</strong> {area:.1f} sq mi</p>
+                            <p style='margin: 0; font-size: 11px; line-height: 1.1;'><strong>Density:</strong> {density:.0f} people/sq mi</p>
+                            <p style='margin: 0; font-size: 11px; line-height: 1.1;'><strong>Municipalities:</strong> {muni_count}</p>
+                            <p style='margin: 2px 0 0 0; font-size: 10px; color: #00ff88; line-height: 1.1;'>Part of 3-County Core</p>
                         </div>
                         """,
-                        max_width=300
+                        max_width=190
                     )
                 ).add_to(three_county_group)
         
