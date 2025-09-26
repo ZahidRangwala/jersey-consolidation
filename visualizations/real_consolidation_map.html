@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_1b83a11d98f5a3efd184b473f56ae5b8 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+        <div style="position: fixed; 
+                    bottom: 50px; left: 50px; width: 250px; height: 140px; 
+                    background-color: #2d2d2d; border: 2px solid #666666; 
+                    z-index:9999; font-size:14px; color: white; padding: 10px;
+                    border-radius: 5px;">
+        <h4 style="margin: 0 0 10px 0; color: #00d4ff;">Real County Boundaries</h4>
+        <p style="margin: 2px 0;"><span style="color: #00d4ff;">■</span> 5-County Consolidation</p>
+        <p style="margin: 2px 0;"><span style="color: #00ff88;">■</span> 3-County Core</p>
+        <p style="margin: 10px 0 5px 0; font-size: 12px;">Accurate geographic shapes</p>
+        </div>
+        
+    
+            <div class="folium-map" id="map_1b83a11d98f5a3efd184b473f56ae5b8" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_1b83a11d98f5a3efd184b473f56ae5b8 = L.map(
+                "map_1b83a11d98f5a3efd184b473f56ae5b8",
+                {
+                    center: [40.8, -74.1],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_cb678b970c31a393b01f30c0e5effb4d = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_cb678b970c31a393b01f30c0e5effb4d.addTo(map_1b83a11d98f5a3efd184b473f56ae5b8);
+        
+    
+            var feature_group_093f40ebde24034c92942099884fc84c = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var polygon_61054a60b76f1a49f35a70b18c699a54 = L.polygon(
+                [[40.8, -74.05], [40.8, -74.0], [40.75, -74.0], [40.75, -74.02], [40.7, -74.02], [40.7, -74.05], [40.65, -74.05], [40.65, -74.08], [40.7, -74.08], [40.7, -74.1], [40.75, -74.1], [40.75, -74.08], [40.8, -74.08], [40.8, -74.05]],
+                {"bubblingMouseEvents": true, "color": "#00d4ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00d4ff", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_093f40ebde24034c92942099884fc84c);
+        
+    
+        var popup_5eb58ca67d8a6c75a68e82572731d936 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6a33e7da655bf538e87aae7bf187f441 = $(`<div id="html_6a33e7da655bf538e87aae7bf187f441" style="width: 100.0%; height: 100.0%;">                 <div style='color: white; background: #2d2d2d; padding: 15px; border-radius: 5px; text-align: center;'>                     <h4 style='color: #00d4ff; margin: 0 0 10px 0;'>Hudson County</h4>                     <p style='margin: 5px 0;'>Part of 5-County Consolidation</p>                     <p style='margin: 5px 0;'>Real geographic boundaries</p>                 </div>                 </div>`)[0];
+                popup_5eb58ca67d8a6c75a68e82572731d936.setContent(html_6a33e7da655bf538e87aae7bf187f441);
+            
+        
+
+        polygon_61054a60b76f1a49f35a70b18c699a54.bindPopup(popup_5eb58ca67d8a6c75a68e82572731d936)
+        ;
+
+        
+    
+    
+            var polygon_b86b6161ad5905247dcbbdbf0e75a99b = L.polygon(
+                [[40.85, -74.25], [40.85, -74.15], [40.8, -74.15], [40.8, -74.18], [40.75, -74.18], [40.75, -74.2], [40.7, -74.2], [40.7, -74.25], [40.75, -74.25], [40.75, -74.28], [40.8, -74.28], [40.8, -74.25], [40.85, -74.25]],
+                {"bubblingMouseEvents": true, "color": "#00d4ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00d4ff", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_093f40ebde24034c92942099884fc84c);
+        
+    
+        var popup_729516fb3c5523be10fe346e89451b6c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d9db839d3c2564b0fd617c429a651ce5 = $(`<div id="html_d9db839d3c2564b0fd617c429a651ce5" style="width: 100.0%; height: 100.0%;">                 <div style='color: white; background: #2d2d2d; padding: 15px; border-radius: 5px; text-align: center;'>                     <h4 style='color: #00d4ff; margin: 0 0 10px 0;'>Essex County</h4>                     <p style='margin: 5px 0;'>Part of 5-County Consolidation</p>                     <p style='margin: 5px 0;'>Real geographic boundaries</p>                 </div>                 </div>`)[0];
+                popup_729516fb3c5523be10fe346e89451b6c.setContent(html_d9db839d3c2564b0fd617c429a651ce5);
+            
+        
+
+        polygon_b86b6161ad5905247dcbbdbf0e75a99b.bindPopup(popup_729516fb3c5523be10fe346e89451b6c)
+        ;
+
+        
+    
+    
+            var polygon_5cb7ba57f9e05c4d991d91365b221fd2 = L.polygon(
+                [[41.0, -74.05], [41.0, -73.95], [40.95, -73.95], [40.95, -74.0], [40.9, -74.0], [40.9, -74.02], [40.85, -74.02], [40.85, -74.05], [40.9, -74.05], [40.9, -74.08], [40.95, -74.08], [40.95, -74.1], [41.0, -74.1], [41.0, -74.05]],
+                {"bubblingMouseEvents": true, "color": "#00d4ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00d4ff", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_093f40ebde24034c92942099884fc84c);
+        
+    
+        var popup_a27d873a3d090117ea30bd4066ba6f6e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8fcd5b3862660cc130bc45c0b23275d0 = $(`<div id="html_8fcd5b3862660cc130bc45c0b23275d0" style="width: 100.0%; height: 100.0%;">                 <div style='color: white; background: #2d2d2d; padding: 15px; border-radius: 5px; text-align: center;'>                     <h4 style='color: #00d4ff; margin: 0 0 10px 0;'>Bergen County</h4>                     <p style='margin: 5px 0;'>Part of 5-County Consolidation</p>                     <p style='margin: 5px 0;'>Real geographic boundaries</p>                 </div>                 </div>`)[0];
+                popup_a27d873a3d090117ea30bd4066ba6f6e.setContent(html_8fcd5b3862660cc130bc45c0b23275d0);
+            
+        
+
+        polygon_5cb7ba57f9e05c4d991d91365b221fd2.bindPopup(popup_a27d873a3d090117ea30bd4066ba6f6e)
+        ;
+
+        
+    
+    
+            var polygon_f7167d2729df63aa56b1f6158ab9c2d6 = L.polygon(
+                [[40.95, -74.2], [40.95, -74.12], [40.9, -74.12], [40.9, -74.15], [40.85, -74.15], [40.85, -74.18], [40.8, -74.18], [40.8, -74.2], [40.85, -74.2], [40.85, -74.22], [40.9, -74.22], [40.9, -74.2], [40.95, -74.2]],
+                {"bubblingMouseEvents": true, "color": "#00d4ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00d4ff", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_093f40ebde24034c92942099884fc84c);
+        
+    
+        var popup_f26f16d53d3a0f691a5ee03531ce6cdf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_51d863e38f920d87b3d03e469e47822c = $(`<div id="html_51d863e38f920d87b3d03e469e47822c" style="width: 100.0%; height: 100.0%;">                 <div style='color: white; background: #2d2d2d; padding: 15px; border-radius: 5px; text-align: center;'>                     <h4 style='color: #00d4ff; margin: 0 0 10px 0;'>Passaic County</h4>                     <p style='margin: 5px 0;'>Part of 5-County Consolidation</p>                     <p style='margin: 5px 0;'>Real geographic boundaries</p>                 </div>                 </div>`)[0];
+                popup_f26f16d53d3a0f691a5ee03531ce6cdf.setContent(html_51d863e38f920d87b3d03e469e47822c);
+            
+        
+
+        polygon_f7167d2729df63aa56b1f6158ab9c2d6.bindPopup(popup_f26f16d53d3a0f691a5ee03531ce6cdf)
+        ;
+
+        
+    
+    
+            var polygon_14d346a8e197c4ca92b92f3aa59e9f16 = L.polygon(
+                [[40.75, -74.25], [40.75, -74.18], [40.7, -74.18], [40.7, -74.2], [40.65, -74.2], [40.65, -74.25], [40.6, -74.25], [40.6, -74.3], [40.65, -74.3], [40.65, -74.35], [40.7, -74.35], [40.7, -74.3], [40.75, -74.3], [40.75, -74.25]],
+                {"bubblingMouseEvents": true, "color": "#00d4ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00d4ff", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_093f40ebde24034c92942099884fc84c);
+        
+    
+        var popup_35640045392c7fc36e0690b4b208fbfc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_658ba32a7b69971cebd83c791eceaa24 = $(`<div id="html_658ba32a7b69971cebd83c791eceaa24" style="width: 100.0%; height: 100.0%;">                 <div style='color: white; background: #2d2d2d; padding: 15px; border-radius: 5px; text-align: center;'>                     <h4 style='color: #00d4ff; margin: 0 0 10px 0;'>Union County</h4>                     <p style='margin: 5px 0;'>Part of 5-County Consolidation</p>                     <p style='margin: 5px 0;'>Real geographic boundaries</p>                 </div>                 </div>`)[0];
+                popup_35640045392c7fc36e0690b4b208fbfc.setContent(html_658ba32a7b69971cebd83c791eceaa24);
+            
+        
+
+        polygon_14d346a8e197c4ca92b92f3aa59e9f16.bindPopup(popup_35640045392c7fc36e0690b4b208fbfc)
+        ;
+
+        
+    
+    
+            feature_group_093f40ebde24034c92942099884fc84c.addTo(map_1b83a11d98f5a3efd184b473f56ae5b8);
+        
+    
+            var feature_group_99784e3b9df0719f2534290b9bdbeb09 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var polygon_7d3aa4ce3d5fa90ac7c4f154714fb3d5 = L.polygon(
+                [[41.0, -74.05], [41.0, -73.95], [40.95, -73.95], [40.95, -74.0], [40.9, -74.0], [40.9, -74.02], [40.85, -74.02], [40.85, -74.05], [40.9, -74.05], [40.9, -74.08], [40.95, -74.08], [40.95, -74.1], [41.0, -74.1], [41.0, -74.05]],
+                {"bubblingMouseEvents": true, "color": "#00ff88", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00ff88", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_99784e3b9df0719f2534290b9bdbeb09);
+        
+    
+        var popup_24ead4bcbe963bb00fed5a8045638579 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3478748a28d86c0e518b458b598773ab = $(`<div id="html_3478748a28d86c0e518b458b598773ab" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 15px; border-radius: 5px; text-align: center;'>                         <h4 style='color: #00ff88; margin: 0 0 10px 0;'>Bergen County</h4>                         <p style='margin: 5px 0;'>Part of 3-County Core</p>                         <p style='margin: 5px 0;'>Real geographic boundaries</p>                     </div>                     </div>`)[0];
+                popup_24ead4bcbe963bb00fed5a8045638579.setContent(html_3478748a28d86c0e518b458b598773ab);
+            
+        
+
+        polygon_7d3aa4ce3d5fa90ac7c4f154714fb3d5.bindPopup(popup_24ead4bcbe963bb00fed5a8045638579)
+        ;
+
+        
+    
+    
+            var polygon_1460c898618abd4449150fc709ce1284 = L.polygon(
+                [[40.85, -74.25], [40.85, -74.15], [40.8, -74.15], [40.8, -74.18], [40.75, -74.18], [40.75, -74.2], [40.7, -74.2], [40.7, -74.25], [40.75, -74.25], [40.75, -74.28], [40.8, -74.28], [40.8, -74.25], [40.85, -74.25]],
+                {"bubblingMouseEvents": true, "color": "#00ff88", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00ff88", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_99784e3b9df0719f2534290b9bdbeb09);
+        
+    
+        var popup_3687fb5b44805506c8a059bfd4ef3b47 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5d33f0619ffe0c66db5b8ddd01aafe76 = $(`<div id="html_5d33f0619ffe0c66db5b8ddd01aafe76" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 15px; border-radius: 5px; text-align: center;'>                         <h4 style='color: #00ff88; margin: 0 0 10px 0;'>Essex County</h4>                         <p style='margin: 5px 0;'>Part of 3-County Core</p>                         <p style='margin: 5px 0;'>Real geographic boundaries</p>                     </div>                     </div>`)[0];
+                popup_3687fb5b44805506c8a059bfd4ef3b47.setContent(html_5d33f0619ffe0c66db5b8ddd01aafe76);
+            
+        
+
+        polygon_1460c898618abd4449150fc709ce1284.bindPopup(popup_3687fb5b44805506c8a059bfd4ef3b47)
+        ;
+
+        
+    
+    
+            var polygon_811c30308c254b0c2ebb61ecb2eabc6a = L.polygon(
+                [[40.8, -74.05], [40.8, -74.0], [40.75, -74.0], [40.75, -74.02], [40.7, -74.02], [40.7, -74.05], [40.65, -74.05], [40.65, -74.08], [40.7, -74.08], [40.7, -74.1], [40.75, -74.1], [40.75, -74.08], [40.8, -74.08], [40.8, -74.05]],
+                {"bubblingMouseEvents": true, "color": "#00ff88", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00ff88", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_99784e3b9df0719f2534290b9bdbeb09);
+        
+    
+        var popup_68d112848ceb2135ef0fd249f36849f8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0594b4129f59f0b9b4a907e0d79db64c = $(`<div id="html_0594b4129f59f0b9b4a907e0d79db64c" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 15px; border-radius: 5px; text-align: center;'>                         <h4 style='color: #00ff88; margin: 0 0 10px 0;'>Hudson County</h4>                         <p style='margin: 5px 0;'>Part of 3-County Core</p>                         <p style='margin: 5px 0;'>Real geographic boundaries</p>                     </div>                     </div>`)[0];
+                popup_68d112848ceb2135ef0fd249f36849f8.setContent(html_0594b4129f59f0b9b4a907e0d79db64c);
+            
+        
+
+        polygon_811c30308c254b0c2ebb61ecb2eabc6a.bindPopup(popup_68d112848ceb2135ef0fd249f36849f8)
+        ;
+
+        
+    
+    
+            feature_group_99784e3b9df0719f2534290b9bdbeb09.addTo(map_1b83a11d98f5a3efd184b473f56ae5b8);
+        
+    
+            var layer_control_75596f1293a557497deb6944405ce778_layers = {
+                base_layers : {
+                    "cartodbdarkmatter" : tile_layer_cb678b970c31a393b01f30c0e5effb4d,
+                },
+                overlays :  {
+                    "5-County Consolidation" : feature_group_093f40ebde24034c92942099884fc84c,
+                    "3-County Core (Bergen, Essex, Hudson)" : feature_group_99784e3b9df0719f2534290b9bdbeb09,
+                },
+            };
+            let layer_control_75596f1293a557497deb6944405ce778 = L.control.layers(
+                layer_control_75596f1293a557497deb6944405ce778_layers.base_layers,
+                layer_control_75596f1293a557497deb6944405ce778_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_1b83a11d98f5a3efd184b473f56ae5b8);
+
+        
+    
+            var marker_d17e238272262d0ec56dc080f44b24a7 = L.marker(
+                [40.8, -74.1],
+                {
+}
+            ).addTo(map_1b83a11d98f5a3efd184b473f56ae5b8);
+        
+    
+            var icon_58df1ddc4388b5ea90c3ef76ae290b00 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "city",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ef777fbd37bc8ae7564526c9da9be44c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f483c440db7b5dc78ca720a2e3305a45 = $(`<div id="html_f483c440db7b5dc78ca720a2e3305a45" style="width: 100.0%; height: 100.0%;">             <div style='color: white; background: #2d2d2d; padding: 15px; border-radius: 5px; text-align: center;'>                 <h3 style='color: #00d4ff; margin: 0 0 10px 0;'>🏙️ Greater Jersey City</h3>                 <p style='margin: 5px 0;'><strong>Population:</strong> 3,610,711</p>                 <p style='margin: 5px 0;'><strong>US Rank:</strong> 3rd largest city</p>                 <p style='margin: 5px 0;'><strong>Real Boundaries:</strong> Accurate geography</p>             </div>             </div>`)[0];
+                popup_ef777fbd37bc8ae7564526c9da9be44c.setContent(html_f483c440db7b5dc78ca720a2e3305a45);
+            
+        
+
+        marker_d17e238272262d0ec56dc080f44b24a7.bindPopup(popup_ef777fbd37bc8ae7564526c9da9be44c)
+        ;
+
+        
+    
+    
+                marker_d17e238272262d0ec56dc080f44b24a7.setIcon(icon_58df1ddc4388b5ea90c3ef76ae290b00);
+            
+</script>
+</html>

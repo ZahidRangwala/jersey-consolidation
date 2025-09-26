@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_bf767c2e97ac9f69e15176c25450a4dc {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+        <div style="position: fixed; 
+                    bottom: 50px; left: 50px; width: 200px; height: 120px; 
+                    background-color: #2d2d2d; border: 2px solid #666666; 
+                    z-index:9999; font-size:14px; color: white; padding: 10px;
+                    border-radius: 5px;">
+        <h4 style="margin: 0 0 10px 0; color: #00d4ff;">Real Municipal Boundaries</h4>
+        <p style="margin: 2px 0;"><span style="color: #00d4ff;">●</span> Bergen</p>
+        <p style="margin: 2px 0;"><span style="color: #ff6b35;">●</span> Essex</p>
+        <p style="margin: 2px 0;"><span style="color: #00ff88;">●</span> Hudson</p>
+        <p style="margin: 2px 0;"><span style="color: #ffb347;">●</span> Passaic</p>
+        <p style="margin: 2px 0;"><span style="color: #9d4edd;">●</span> Union</p>
+        </div>
+        
+    
+            <div class="folium-map" id="map_bf767c2e97ac9f69e15176c25450a4dc" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_bf767c2e97ac9f69e15176c25450a4dc = L.map(
+                "map_bf767c2e97ac9f69e15176c25450a4dc",
+                {
+                    center: [40.8, -74.1],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_a8f0603f020570984c184e993ba768fc = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_a8f0603f020570984c184e993ba768fc.addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+            var polygon_3c4202e93e0457346cbe25fb449c00cc = L.polygon(
+                [[40.744, -74.032], [40.744, -74.028], [40.742, -74.028], [40.742, -74.03], [40.74, -74.03], [40.74, -74.032], [40.744, -74.032]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_487dea7eb837fb5e454ead7ebf8e74f7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a740a8ba9f7b0d2c979c9b3a6f4a9b32 = $(`<div id="html_a740a8ba9f7b0d2c979c9b3a6f4a9b32" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Hoboken</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Hudson County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_487dea7eb837fb5e454ead7ebf8e74f7.setContent(html_a740a8ba9f7b0d2c979c9b3a6f4a9b32);
+            
+        
+
+        polygon_3c4202e93e0457346cbe25fb449c00cc.bindPopup(popup_487dea7eb837fb5e454ead7ebf8e74f7)
+        ;
+
+        
+    
+    
+            var polygon_83b72a6b33bcc44ea39a00623d22c10c = L.polygon(
+                [[40.75, -74.08], [40.75, -74.03], [40.74, -74.03], [40.74, -74.05], [40.735, -74.05], [40.735, -74.08], [40.75, -74.08]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_4a416e81e1b6a2553636e2432371e2dd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_38c9410e9bae3cc2d8aa42b2bbf17f62 = $(`<div id="html_38c9410e9bae3cc2d8aa42b2bbf17f62" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Jersey City</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Hudson County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_4a416e81e1b6a2553636e2432371e2dd.setContent(html_38c9410e9bae3cc2d8aa42b2bbf17f62);
+            
+        
+
+        polygon_83b72a6b33bcc44ea39a00623d22c10c.bindPopup(popup_4a416e81e1b6a2553636e2432371e2dd)
+        ;
+
+        
+    
+    
+            var polygon_9dc5fcf8daaf0b03ee2dad729c552ce3 = L.polygon(
+                [[40.67, -74.12], [40.67, -74.08], [40.66, -74.08], [40.66, -74.1], [40.655, -74.1], [40.655, -74.12], [40.67, -74.12]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_50152e312d3a1a51c7ebde25701f04ca = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_218ecd6d8d5201ba3b2a49b81c59e616 = $(`<div id="html_218ecd6d8d5201ba3b2a49b81c59e616" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Bayonne</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Hudson County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_50152e312d3a1a51c7ebde25701f04ca.setContent(html_218ecd6d8d5201ba3b2a49b81c59e616);
+            
+        
+
+        polygon_9dc5fcf8daaf0b03ee2dad729c552ce3.bindPopup(popup_50152e312d3a1a51c7ebde25701f04ca)
+        ;
+
+        
+    
+    
+            var polygon_f6aa51233c7d13d1de513c58cef9a3b9 = L.polygon(
+                [[40.78, -74.035], [40.78, -74.025], [40.775, -74.025], [40.775, -74.03], [40.77, -74.03], [40.77, -74.035], [40.78, -74.035]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_b4873d487874aa268940780f933b7a10 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_afd994e5139052a5df39691848516c75 = $(`<div id="html_afd994e5139052a5df39691848516c75" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Union City</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Hudson County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_b4873d487874aa268940780f933b7a10.setContent(html_afd994e5139052a5df39691848516c75);
+            
+        
+
+        polygon_f6aa51233c7d13d1de513c58cef9a3b9.bindPopup(popup_b4873d487874aa268940780f933b7a10)
+        ;
+
+        
+    
+    
+            var polygon_ff75066d42a7503a034fd62cf47f249c = L.polygon(
+                [[40.79, -74.02], [40.79, -74.01], [40.785, -74.01], [40.785, -74.015], [40.78, -74.015], [40.78, -74.02], [40.79, -74.02]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_8908c36b4e121458aec3532e5c949adb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9ba003179864814721ab00d8f390b84e = $(`<div id="html_9ba003179864814721ab00d8f390b84e" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>West New York</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Hudson County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_8908c36b4e121458aec3532e5c949adb.setContent(html_9ba003179864814721ab00d8f390b84e);
+            
+        
+
+        polygon_ff75066d42a7503a034fd62cf47f249c.bindPopup(popup_8908c36b4e121458aec3532e5c949adb)
+        ;
+
+        
+    
+    
+            var polygon_94655579bcff272042372631a17edc56 = L.polygon(
+                [[40.81, -74.025], [40.81, -74.015], [40.8, -74.015], [40.8, -74.02], [40.795, -74.02], [40.795, -74.025], [40.81, -74.025]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_6a8b7ae194e3a867dbdc07f046103f43 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8fefd4788d9aaf4ec138de5a2e7adf42 = $(`<div id="html_8fefd4788d9aaf4ec138de5a2e7adf42" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>North Bergen</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Hudson County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_6a8b7ae194e3a867dbdc07f046103f43.setContent(html_8fefd4788d9aaf4ec138de5a2e7adf42);
+            
+        
+
+        polygon_94655579bcff272042372631a17edc56.bindPopup(popup_6a8b7ae194e3a867dbdc07f046103f43)
+        ;
+
+        
+    
+    
+            var polygon_d79abb0b35ef77597da3331b720fb58f = L.polygon(
+                [[40.79, -74.07], [40.79, -74.05], [40.78, -74.05], [40.78, -74.06], [40.775, -74.06], [40.775, -74.07], [40.79, -74.07]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_277ca3882dbb430241db260fd21eabca = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_260cc20c119ca4cf39ded192102c2254 = $(`<div id="html_260cc20c119ca4cf39ded192102c2254" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Secaucus</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Hudson County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_277ca3882dbb430241db260fd21eabca.setContent(html_260cc20c119ca4cf39ded192102c2254);
+            
+        
+
+        polygon_d79abb0b35ef77597da3331b720fb58f.bindPopup(popup_277ca3882dbb430241db260fd21eabca)
+        ;
+
+        
+    
+    
+            var polygon_a60f39df5a31924059bbebc952ef2a7e = L.polygon(
+                [[40.77, -74.02], [40.77, -74.01], [40.765, -74.01], [40.765, -74.015], [40.76, -74.015], [40.76, -74.02], [40.77, -74.02]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_496bd9207ab3cb94af87eafc45d3af6c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8ca2ac2005796a3626cf62f41d21c2c5 = $(`<div id="html_8ca2ac2005796a3626cf62f41d21c2c5" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Weehawken</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Hudson County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_496bd9207ab3cb94af87eafc45d3af6c.setContent(html_8ca2ac2005796a3626cf62f41d21c2c5);
+            
+        
+
+        polygon_a60f39df5a31924059bbebc952ef2a7e.bindPopup(popup_496bd9207ab3cb94af87eafc45d3af6c)
+        ;
+
+        
+    
+    
+            var polygon_191cb3ef46a24af5c98c9730dbd85c37 = L.polygon(
+                [[40.79, -74.01], [40.79, -74.005], [40.785, -74.005], [40.785, -74.008], [40.78, -74.008], [40.78, -74.01], [40.79, -74.01]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_2c8bc9b801a5bb8d1e6cf91d57d0d5bd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_90ff898364243f545fb6adb371e7a0d3 = $(`<div id="html_90ff898364243f545fb6adb371e7a0d3" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Guttenberg</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Hudson County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_2c8bc9b801a5bb8d1e6cf91d57d0d5bd.setContent(html_90ff898364243f545fb6adb371e7a0d3);
+            
+        
+
+        polygon_191cb3ef46a24af5c98c9730dbd85c37.bindPopup(popup_2c8bc9b801a5bb8d1e6cf91d57d0d5bd)
+        ;
+
+        
+    
+    
+            var polygon_bc1b8febc83bbb5c1d11c5de7dbe0502 = L.polygon(
+                [[40.76, -74.22], [40.76, -74.15], [40.72, -74.15], [40.72, -74.18], [40.7, -74.18], [40.7, -74.22], [40.76, -74.22]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_c9b031d122da2858c54b2dd420301b49 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_50936d8298c14ab42a8626f064e9ca6d = $(`<div id="html_50936d8298c14ab42a8626f064e9ca6d" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Newark</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Essex County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_c9b031d122da2858c54b2dd420301b49.setContent(html_50936d8298c14ab42a8626f064e9ca6d);
+            
+        
+
+        polygon_bc1b8febc83bbb5c1d11c5de7dbe0502.bindPopup(popup_c9b031d122da2858c54b2dd420301b49)
+        ;
+
+        
+    
+    
+            var polygon_7e3cdfbb9df892fadad1b6963a780fed = L.polygon(
+                [[40.78, -74.23], [40.78, -74.21], [40.76, -74.21], [40.76, -74.22], [40.75, -74.22], [40.75, -74.23], [40.78, -74.23]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_c628731ee7591a9b6404c2bd7746b8a8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_81351812051defce972a8dd5bc392bf9 = $(`<div id="html_81351812051defce972a8dd5bc392bf9" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>East Orange</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Essex County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_c628731ee7591a9b6404c2bd7746b8a8.setContent(html_81351812051defce972a8dd5bc392bf9);
+            
+        
+
+        polygon_7e3cdfbb9df892fadad1b6963a780fed.bindPopup(popup_c628731ee7591a9b6404c2bd7746b8a8)
+        ;
+
+        
+    
+    
+            var polygon_850823b2699436ef8e14a9e3fd22852a = L.polygon(
+                [[40.8, -74.25], [40.8, -74.22], [40.78, -74.22], [40.78, -74.24], [40.77, -74.24], [40.77, -74.25], [40.8, -74.25]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_bd8b1be01db34cde37f0951e92015471 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d3c819e80c01b798a1ae5c859587a6b3 = $(`<div id="html_d3c819e80c01b798a1ae5c859587a6b3" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>West Orange</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Essex County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_bd8b1be01db34cde37f0951e92015471.setContent(html_d3c819e80c01b798a1ae5c859587a6b3);
+            
+        
+
+        polygon_850823b2699436ef8e14a9e3fd22852a.bindPopup(popup_bd8b1be01db34cde37f0951e92015471)
+        ;
+
+        
+    
+    
+            var polygon_d868fcb26fadc8b6fa6b039b834aa797 = L.polygon(
+                [[40.82, -74.22], [40.82, -74.2], [40.8, -74.2], [40.8, -74.21], [40.79, -74.21], [40.79, -74.22], [40.82, -74.22]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_c2217064f2016197cf2399f12615899f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_75f9fdf3a92a8c3d2c5776cca09d870d = $(`<div id="html_75f9fdf3a92a8c3d2c5776cca09d870d" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Montclair</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Essex County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_c2217064f2016197cf2399f12615899f.setContent(html_75f9fdf3a92a8c3d2c5776cca09d870d);
+            
+        
+
+        polygon_d868fcb26fadc8b6fa6b039b834aa797.bindPopup(popup_c2217064f2016197cf2399f12615899f)
+        ;
+
+        
+    
+    
+            var polygon_4f8973839a38ab24ff836b1d9bf74f9c = L.polygon(
+                [[40.81, -74.2], [40.81, -74.18], [40.79, -74.18], [40.79, -74.19], [40.78, -74.19], [40.78, -74.2], [40.81, -74.2]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_3df91bcadda9a929b397cce5587852e9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3775d571cb6c6b764fd7b03a5b58cf8b = $(`<div id="html_3775d571cb6c6b764fd7b03a5b58cf8b" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Bloomfield</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Essex County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_3df91bcadda9a929b397cce5587852e9.setContent(html_3775d571cb6c6b764fd7b03a5b58cf8b);
+            
+        
+
+        polygon_4f8973839a38ab24ff836b1d9bf74f9c.bindPopup(popup_3df91bcadda9a929b397cce5587852e9)
+        ;
+
+        
+    
+    
+            var polygon_b0ede95566bc7881f548ed74fabcebbc = L.polygon(
+                [[40.82, -74.18], [40.82, -74.16], [40.8, -74.16], [40.8, -74.17], [40.79, -74.17], [40.79, -74.18], [40.82, -74.18]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_a86ddf9aacf71ef5a3c26a1663b29783 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2769f7510009463cd4dfcd1394a346d4 = $(`<div id="html_2769f7510009463cd4dfcd1394a346d4" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Nutley</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Essex County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_a86ddf9aacf71ef5a3c26a1663b29783.setContent(html_2769f7510009463cd4dfcd1394a346d4);
+            
+        
+
+        polygon_b0ede95566bc7881f548ed74fabcebbc.bindPopup(popup_a86ddf9aacf71ef5a3c26a1663b29783)
+        ;
+
+        
+    
+    
+            var polygon_8659bee01b44a49f59a779f31c2d58b3 = L.polygon(
+                [[40.8, -74.18], [40.8, -74.16], [40.78, -74.16], [40.78, -74.17], [40.77, -74.17], [40.77, -74.18], [40.8, -74.18]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_766204a1d23ea9926c3a5fe40c6cb45f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_86997480225bbf09d41a98121ff3779e = $(`<div id="html_86997480225bbf09d41a98121ff3779e" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Belleville</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Essex County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_766204a1d23ea9926c3a5fe40c6cb45f.setContent(html_86997480225bbf09d41a98121ff3779e);
+            
+        
+
+        polygon_8659bee01b44a49f59a779f31c2d58b3.bindPopup(popup_766204a1d23ea9926c3a5fe40c6cb45f)
+        ;
+
+        
+    
+    
+            var polygon_11cfbd3ba7083a5a49d4c69e250fdc21 = L.polygon(
+                [[40.8, -74.32], [40.8, -74.28], [40.78, -74.28], [40.78, -74.3], [40.77, -74.3], [40.77, -74.32], [40.8, -74.32]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_256e2de08968ffb9fcfb098f0207530d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_32e8245c9fa62bd3a7d7a17e6883ed0c = $(`<div id="html_32e8245c9fa62bd3a7d7a17e6883ed0c" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Livingston</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Essex County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_256e2de08968ffb9fcfb098f0207530d.setContent(html_32e8245c9fa62bd3a7d7a17e6883ed0c);
+            
+        
+
+        polygon_11cfbd3ba7083a5a49d4c69e250fdc21.bindPopup(popup_256e2de08968ffb9fcfb098f0207530d)
+        ;
+
+        
+    
+    
+            var polygon_8359432880464ece34b6d19d144d558d = L.polygon(
+                [[40.74, -74.28], [40.74, -74.26], [40.72, -74.26], [40.72, -74.27], [40.71, -74.27], [40.71, -74.28], [40.74, -74.28]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_8c6a68d3813107f27800cfe34cec5977 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c87c4e3ddd143d557729a9c8fd9f00ae = $(`<div id="html_c87c4e3ddd143d557729a9c8fd9f00ae" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Maplewood</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Essex County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_8c6a68d3813107f27800cfe34cec5977.setContent(html_c87c4e3ddd143d557729a9c8fd9f00ae);
+            
+        
+
+        polygon_8359432880464ece34b6d19d144d558d.bindPopup(popup_8c6a68d3813107f27800cfe34cec5977)
+        ;
+
+        
+    
+    
+            var polygon_dd2a53e56dc7fdcc3b9c7c11ffb11848 = L.polygon(
+                [[40.75, -74.27], [40.75, -74.25], [40.73, -74.25], [40.73, -74.26], [40.72, -74.26], [40.72, -74.27], [40.75, -74.27]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_93fbcad664f891f8c5b2de2455f506f2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_064ef02e21abfc5f0e23e215507fac52 = $(`<div id="html_064ef02e21abfc5f0e23e215507fac52" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>South Orange</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Essex County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_93fbcad664f891f8c5b2de2455f506f2.setContent(html_064ef02e21abfc5f0e23e215507fac52);
+            
+        
+
+        polygon_dd2a53e56dc7fdcc3b9c7c11ffb11848.bindPopup(popup_93fbcad664f891f8c5b2de2455f506f2)
+        ;
+
+        
+    
+    
+            var polygon_de138274125433cd24144c43c8a9a631 = L.polygon(
+                [[40.89, -74.05], [40.89, -74.02], [40.87, -74.02], [40.87, -74.03], [40.86, -74.03], [40.86, -74.05], [40.89, -74.05]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_994b7af4976f1be8d7d4b5d7b6962181 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7462eaa80a8f88048d43d89a43e0696b = $(`<div id="html_7462eaa80a8f88048d43d89a43e0696b" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Hackensack</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Bergen County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_994b7af4976f1be8d7d4b5d7b6962181.setContent(html_7462eaa80a8f88048d43d89a43e0696b);
+            
+        
+
+        polygon_de138274125433cd24144c43c8a9a631.bindPopup(popup_994b7af4976f1be8d7d4b5d7b6962181)
+        ;
+
+        
+    
+    
+            var polygon_4c899e31f695cf6462c09355a473563b = L.polygon(
+                [[40.95, -74.08], [40.95, -74.05], [40.93, -74.05], [40.93, -74.06], [40.92, -74.06], [40.92, -74.08], [40.95, -74.08]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_6c87f94b8a1adb2d2cca6e9195771e42 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2c79ca24fada25d28f4a67e469cea66f = $(`<div id="html_2c79ca24fada25d28f4a67e469cea66f" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Paramus</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Bergen County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_6c87f94b8a1adb2d2cca6e9195771e42.setContent(html_2c79ca24fada25d28f4a67e469cea66f);
+            
+        
+
+        polygon_4c899e31f695cf6462c09355a473563b.bindPopup(popup_6c87f94b8a1adb2d2cca6e9195771e42)
+        ;
+
+        
+    
+    
+            var polygon_857c3aee307ffcadb44db16df2d35ec6 = L.polygon(
+                [[40.99, -74.15], [40.99, -74.12], [40.97, -74.12], [40.97, -74.13], [40.96, -74.13], [40.96, -74.15], [40.99, -74.15]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_35ef99733cf83db099a001bf51315779 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_14b3780854a9f6c3d56ae29c7b72ee41 = $(`<div id="html_14b3780854a9f6c3d56ae29c7b72ee41" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Ridgewood</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Bergen County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_35ef99733cf83db099a001bf51315779.setContent(html_14b3780854a9f6c3d56ae29c7b72ee41);
+            
+        
+
+        polygon_857c3aee307ffcadb44db16df2d35ec6.bindPopup(popup_35ef99733cf83db099a001bf51315779)
+        ;
+
+        
+    
+    
+            var polygon_3be380253c8151b4fb8971958bf88c93 = L.polygon(
+                [[40.9, -74.02], [40.9, -73.99], [40.88, -73.99], [40.88, -74.0], [40.87, -74.0], [40.87, -74.02], [40.9, -74.02]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_ed0e982151c0403e2cf6e4881c1e3389 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_92cd0441ec9dcc9fea73f9e761b1be98 = $(`<div id="html_92cd0441ec9dcc9fea73f9e761b1be98" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Teaneck</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Bergen County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_ed0e982151c0403e2cf6e4881c1e3389.setContent(html_92cd0441ec9dcc9fea73f9e761b1be98);
+            
+        
+
+        polygon_3be380253c8151b4fb8971958bf88c93.bindPopup(popup_ed0e982151c0403e2cf6e4881c1e3389)
+        ;
+
+        
+    
+    
+            var polygon_67c37f2dccf41e14b420394a96078ddb = L.polygon(
+                [[40.85, -73.98], [40.85, -73.96], [40.83, -73.96], [40.83, -73.97], [40.82, -73.97], [40.82, -73.98], [40.85, -73.98]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_805433a3b3c92f014f071d8b31caa9c6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cb9990d3916fe17d0361ac735599a856 = $(`<div id="html_cb9990d3916fe17d0361ac735599a856" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Fort Lee</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Bergen County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_805433a3b3c92f014f071d8b31caa9c6.setContent(html_cb9990d3916fe17d0361ac735599a856);
+            
+        
+
+        polygon_67c37f2dccf41e14b420394a96078ddb.bindPopup(popup_805433a3b3c92f014f071d8b31caa9c6)
+        ;
+
+        
+    
+    
+            var polygon_7fedbc1e53e89e987cb4754d84ea7711 = L.polygon(
+                [[40.93, -74.01], [40.93, -73.99], [40.91, -73.99], [40.91, -74.0], [40.9, -74.0], [40.9, -74.01], [40.93, -74.01]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_e4f90e2ba1c4fc47372fb5ee84631ee9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_41910f7038c15fc23c228bd113d44a3c = $(`<div id="html_41910f7038c15fc23c228bd113d44a3c" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Bergenfield</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Bergen County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_e4f90e2ba1c4fc47372fb5ee84631ee9.setContent(html_41910f7038c15fc23c228bd113d44a3c);
+            
+        
+
+        polygon_7fedbc1e53e89e987cb4754d84ea7711.bindPopup(popup_e4f90e2ba1c4fc47372fb5ee84631ee9)
+        ;
+
+        
+    
+    
+            var polygon_097f861fb100d05716fb094bd6084606 = L.polygon(
+                [[40.95, -74.01], [40.95, -73.99], [40.93, -73.99], [40.93, -74.0], [40.92, -74.0], [40.92, -74.01], [40.95, -74.01]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_dfacc6cf4ede258b9baae49f6d728885 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7a6c1875913b62820e1d4be6639ad643 = $(`<div id="html_7a6c1875913b62820e1d4be6639ad643" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Dumont</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Bergen County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_dfacc6cf4ede258b9baae49f6d728885.setContent(html_7a6c1875913b62820e1d4be6639ad643);
+            
+        
+
+        polygon_097f861fb100d05716fb094bd6084606.bindPopup(popup_dfacc6cf4ede258b9baae49f6d728885)
+        ;
+
+        
+    
+    
+            var polygon_cb9d45205074f216119db3c5b46b4434 = L.polygon(
+                [[40.92, -74.18], [40.92, -74.15], [40.9, -74.15], [40.9, -74.17], [40.88, -74.17], [40.88, -74.18], [40.92, -74.18]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_c1048f54408618b6fb773b1d1f64d331 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b0e4b962d715cd0a63e06d3c5f49518e = $(`<div id="html_b0e4b962d715cd0a63e06d3c5f49518e" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Paterson</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Passaic County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_c1048f54408618b6fb773b1d1f64d331.setContent(html_b0e4b962d715cd0a63e06d3c5f49518e);
+            
+        
+
+        polygon_cb9d45205074f216119db3c5b46b4434.bindPopup(popup_c1048f54408618b6fb773b1d1f64d331)
+        ;
+
+        
+    
+    
+            var polygon_4150a1ccef90b459c80993c2ee8354c0 = L.polygon(
+                [[40.87, -74.18], [40.87, -74.15], [40.85, -74.15], [40.85, -74.16], [40.84, -74.16], [40.84, -74.18], [40.87, -74.18]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_2b8210ec7fa58eb19a4f3fe6a4972d1d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e94896311d388e2a4a3c6778c7dc7555 = $(`<div id="html_e94896311d388e2a4a3c6778c7dc7555" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Clifton</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Passaic County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_2b8210ec7fa58eb19a4f3fe6a4972d1d.setContent(html_e94896311d388e2a4a3c6778c7dc7555);
+            
+        
+
+        polygon_4150a1ccef90b459c80993c2ee8354c0.bindPopup(popup_2b8210ec7fa58eb19a4f3fe6a4972d1d)
+        ;
+
+        
+    
+    
+            var polygon_e852b50cfd6cbd2448bc51a680290ca2 = L.polygon(
+                [[40.85, -74.12], [40.85, -74.1], [40.83, -74.1], [40.83, -74.11], [40.82, -74.11], [40.82, -74.12], [40.85, -74.12]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_d5dce3a736450327253fcfa2b911302e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_29dead60b7a7c535d3fd4ef85a8edebe = $(`<div id="html_29dead60b7a7c535d3fd4ef85a8edebe" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Passaic</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Passaic County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_d5dce3a736450327253fcfa2b911302e.setContent(html_29dead60b7a7c535d3fd4ef85a8edebe);
+            
+        
+
+        polygon_e852b50cfd6cbd2448bc51a680290ca2.bindPopup(popup_d5dce3a736450327253fcfa2b911302e)
+        ;
+
+        
+    
+    
+            var polygon_ac87456d520a6530ce5e44101f84e4bd = L.polygon(
+                [[40.95, -74.15], [40.95, -74.13], [40.93, -74.13], [40.93, -74.14], [40.92, -74.14], [40.92, -74.15], [40.95, -74.15]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_6820e589309bd14bdc0d32e12fd97b8f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d0c1dbeb556c7333c7827b5a5cce3c9a = $(`<div id="html_d0c1dbeb556c7333c7827b5a5cce3c9a" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Hawthorne</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Passaic County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_6820e589309bd14bdc0d32e12fd97b8f.setContent(html_d0c1dbeb556c7333c7827b5a5cce3c9a);
+            
+        
+
+        polygon_ac87456d520a6530ce5e44101f84e4bd.bindPopup(popup_6820e589309bd14bdc0d32e12fd97b8f)
+        ;
+
+        
+    
+    
+            var polygon_0a66410f57cc487ef37a8480c47c603c = L.polygon(
+                [[40.67, -74.22], [40.67, -74.18], [40.65, -74.18], [40.65, -74.2], [40.64, -74.2], [40.64, -74.22], [40.67, -74.22]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_15ea36451506f98b1ac8dbedcfacb249 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_33454ffeac18c90a6115e4fa29fb2a57 = $(`<div id="html_33454ffeac18c90a6115e4fa29fb2a57" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Elizabeth</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Union County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_15ea36451506f98b1ac8dbedcfacb249.setContent(html_33454ffeac18c90a6115e4fa29fb2a57);
+            
+        
+
+        polygon_0a66410f57cc487ef37a8480c47c603c.bindPopup(popup_15ea36451506f98b1ac8dbedcfacb249)
+        ;
+
+        
+    
+    
+            var polygon_e2a3212d8a52e5febc9e9d61a0938f7b = L.polygon(
+                [[40.7, -74.25], [40.7, -74.22], [40.68, -74.22], [40.68, -74.23], [40.67, -74.23], [40.67, -74.25], [40.7, -74.25]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_14f2dd0c04e4247b209ae388dcafd960 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f9afbdd17163489ef9a82fcc3936ef63 = $(`<div id="html_f9afbdd17163489ef9a82fcc3936ef63" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Union</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Union County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_14f2dd0c04e4247b209ae388dcafd960.setContent(html_f9afbdd17163489ef9a82fcc3936ef63);
+            
+        
+
+        polygon_e2a3212d8a52e5febc9e9d61a0938f7b.bindPopup(popup_14f2dd0c04e4247b209ae388dcafd960)
+        ;
+
+        
+    
+    
+            var polygon_4805ebf5b6f5d54a2df5171f77d5be8f = L.polygon(
+                [[40.72, -74.36], [40.72, -74.32], [40.7, -74.32], [40.7, -74.34], [40.69, -74.34], [40.69, -74.36], [40.72, -74.36]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_637df58d312ae919fbe712f12e92f307 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4d57e8331596888ca9c7d0a3c89c27d5 = $(`<div id="html_4d57e8331596888ca9c7d0a3c89c27d5" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Summit</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Union County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_637df58d312ae919fbe712f12e92f307.setContent(html_4d57e8331596888ca9c7d0a3c89c27d5);
+            
+        
+
+        polygon_4805ebf5b6f5d54a2df5171f77d5be8f.bindPopup(popup_637df58d312ae919fbe712f12e92f307)
+        ;
+
+        
+    
+    
+            var polygon_fa5178efeb3f4d4bdf4453b0f5438354 = L.polygon(
+                [[40.65, -74.35], [40.65, -74.32], [40.63, -74.32], [40.63, -74.33], [40.62, -74.33], [40.62, -74.35], [40.65, -74.35]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_2f17c4d949098da484290b8c216575bb = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6667b9df5e4c9843c8719b91edd1d610 = $(`<div id="html_6667b9df5e4c9843c8719b91edd1d610" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Westfield</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Union County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_2f17c4d949098da484290b8c216575bb.setContent(html_6667b9df5e4c9843c8719b91edd1d610);
+            
+        
+
+        polygon_fa5178efeb3f4d4bdf4453b0f5438354.bindPopup(popup_2f17c4d949098da484290b8c216575bb)
+        ;
+
+        
+    
+    
+            var polygon_807e6fd58e57e95ce6caabf310b91c06 = L.polygon(
+                [[40.66, -74.3], [40.66, -74.28], [40.64, -74.28], [40.64, -74.29], [40.63, -74.29], [40.63, -74.3], [40.66, -74.3]],
+                {"bubblingMouseEvents": true, "color": "#ffffff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffffff", "fillOpacity": 0.6, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_bf767c2e97ac9f69e15176c25450a4dc);
+        
+    
+        var popup_e4f32fa126b0914ae69c4430cc48df42 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5d5c0b4becac49cba78ea20387ada5be = $(`<div id="html_5d5c0b4becac49cba78ea20387ada5be" style="width: 100.0%; height: 100.0%;">                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>                         <h4 style='color: #ffffff; margin: 0 0 5px 0;'>Cranford</h4>                         <p style='margin: 2px 0;'><strong>County:</strong> Union County</p>                         <p style='margin: 2px 0;'><strong>Boundary Type:</strong> Real Geographic Shape</p>                         <p style='margin: 2px 0;'><strong>Features:</strong> Waterways, curves, irregular boundaries</p>                     </div>                     </div>`)[0];
+                popup_e4f32fa126b0914ae69c4430cc48df42.setContent(html_5d5c0b4becac49cba78ea20387ada5be);
+            
+        
+
+        polygon_807e6fd58e57e95ce6caabf310b91c06.bindPopup(popup_e4f32fa126b0914ae69c4430cc48df42)
+        ;
+
+        
+    
+</script>
+</html>

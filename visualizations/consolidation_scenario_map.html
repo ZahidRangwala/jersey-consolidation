@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_f6adf3beb19c726db382f2a970872155 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_f6adf3beb19c726db382f2a970872155" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_f6adf3beb19c726db382f2a970872155 = L.map(
+                "map_f6adf3beb19c726db382f2a970872155",
+                {
+                    center: [40.8, -74.1],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 10,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f127e876f69e2cfecb368d434657658f = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_f127e876f69e2cfecb368d434657658f.addTo(map_f6adf3beb19c726db382f2a970872155);
+        
+    
+            var rectangle_b37dcca9e4c1b965cb44707866bcfd4e = L.rectangle(
+                [[40.6, -74.3], [41.0, -73.9]],
+                {"bubblingMouseEvents": true, "color": "#00d4ff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00d4ff", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_f6adf3beb19c726db382f2a970872155);
+        
+    
+        var popup_5fe1be1b6de40812a71c8b3931eb1983 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_530eb60193012b5724c09ff0b173ba44 = $(`<div id="html_530eb60193012b5724c09ff0b173ba44" style="width: 100.0%; height: 100.0%;"><div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px;'><h4 style='color: #00d4ff; margin: 0;'>5-County Consolidation Zone</h4><p>Population: 3,610,711</p><p>Would be 3rd largest US city</p></div></div>`)[0];
+                popup_5fe1be1b6de40812a71c8b3931eb1983.setContent(html_530eb60193012b5724c09ff0b173ba44);
+            
+        
+
+        rectangle_b37dcca9e4c1b965cb44707866bcfd4e.bindPopup(popup_5fe1be1b6de40812a71c8b3931eb1983)
+        ;
+
+        
+    
+    
+            var marker_9a239f3b74ffd9392d1807fe382aed00 = L.marker(
+                [40.8, -74.1],
+                {
+}
+            ).addTo(map_f6adf3beb19c726db382f2a970872155);
+        
+    
+            var icon_06392af8a5bf2279b12e215f5db8c96c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "city",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f934d39b5ae9be4c013e4dcaf2035695 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_690dc474a40117395ba3e53c2437c291 = $(`<div id="html_690dc474a40117395ba3e53c2437c291" style="width: 100.0%; height: 100.0%;">             <div style='color: white; background: #2d2d2d; padding: 15px; border-radius: 5px; text-align: center;'>                 <h3 style='color: #00d4ff; margin: 0 0 10px 0;'>🏙️ Greater Jersey City</h3>                 <p style='margin: 5px 0;'><strong>Population:</strong> 3,610,711</p>                 <p style='margin: 5px 0;'><strong>US Rank:</strong> 3rd largest city</p>                 <p style='margin: 5px 0;'><strong>World Rank:</strong> 58th largest</p>                 <p style='margin: 5px 0;'><strong>Annual Savings:</strong> $500M</p>             </div>             </div>`)[0];
+                popup_f934d39b5ae9be4c013e4dcaf2035695.setContent(html_690dc474a40117395ba3e53c2437c291);
+            
+        
+
+        marker_9a239f3b74ffd9392d1807fe382aed00.bindPopup(popup_f934d39b5ae9be4c013e4dcaf2035695)
+        ;
+
+        
+    
+    
+                marker_9a239f3b74ffd9392d1807fe382aed00.setIcon(icon_06392af8a5bf2279b12e215f5db8c96c);
+            
+</script>
+</html>
