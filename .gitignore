@@ -187,3 +187,6 @@ models/
 # Cache directories
 .cache/
 cache/
+
+# Generated visualization files
+visualizations/*.html
