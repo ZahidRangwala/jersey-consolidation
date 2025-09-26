@@ -53,27 +53,27 @@ class BaseNJConsolidationDashboard:
                    className="lead text-center text-light"),
 
             dbc.Tabs([
-                dbc.Tab(label="📊 Overview", tab_id="overview-tab", children=[
+                dbc.Tab(label="Overview", tab_id="overview-tab", children=[
                     self._create_overview_tab()
                 ]),
                 
-                dbc.Tab(label="🗺️ Interactive Maps", tab_id="maps-tab", children=[
+                dbc.Tab(label="Interactive Maps", tab_id="maps-tab", children=[
                     self._create_maps_tab()
                 ]),
                 
-                dbc.Tab(label="📈 Population & Rankings", tab_id="pop-rank-tab", children=[
+                dbc.Tab(label="Population & Rankings", tab_id="pop-rank-tab", children=[
                     self._create_population_tab()
                 ]),
                 
-                dbc.Tab(label="🏛️ County Analysis", tab_id="county-tab", children=[
+                dbc.Tab(label="County Analysis", tab_id="county-tab", children=[
                     self._create_county_tab()
                 ]),
                 
-                dbc.Tab(label="💰 Economic Impact", tab_id="economic-tab", children=[
+                dbc.Tab(label="Economic Impact", tab_id="economic-tab", children=[
                     self._create_economic_tab()
                 ]),
                 
-                dbc.Tab(label="📋 Methodology & Claims", tab_id="claims-tab", children=[
+                dbc.Tab(label="Methodology & Claims", tab_id="claims-tab", children=[
                     self._create_claims_tab()
                 ]),
             ])
@@ -114,14 +114,9 @@ class BaseNJConsolidationDashboard:
                 dbc.Col([
                     dbc.Card([
                         dbc.CardHeader([
-                            html.H4("🗺️ Current Municipal Structure", className="text-light mb-0")
+                            html.H4("Current Municipal Structure", className="text-light mb-0")
                         ], className="bg-secondary"),
                         dbc.CardBody([
-                            html.P([
-                                "Interactive map showing current municipal boundaries using ",
-                                html.Strong("US Census Bureau TIGER/Line data", className="text-warning"),
-                                " that trace actual waterways, coastlines, and natural boundaries. Each municipality is color-coded by county."
-                            ], className="text-light"),
                             self._create_map_iframe('tiger_municipal_boundaries_map.html')
                         ])
                     ], className="bg-dark border-secondary mb-4")
@@ -130,14 +125,9 @@ class BaseNJConsolidationDashboard:
                 dbc.Col([
                     dbc.Card([
                         dbc.CardHeader([
-                            html.H4("🔄 Consolidation Scenarios", className="text-light mb-0")
+                            html.H4("Consolidation Scenarios", className="text-light mb-0")
                         ], className="bg-secondary"),
                         dbc.CardBody([
-                            html.P([
-                                "Map showing proposed consolidation scenarios using ",
-                                html.Strong("US Census Bureau TIGER/Line county boundaries", className="text-warning"),
-                                " that follow actual geographic features and interactive toggles."
-                            ], className="text-light"),
                             self._create_map_iframe('tiger_consolidation_map.html')
                         ])
                     ], className="bg-dark border-secondary mb-4")

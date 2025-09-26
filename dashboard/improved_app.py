@@ -80,7 +80,7 @@ class ImprovedNJConsolidationDashboard:
         
         # Header with dark theme
         header = dbc.NavbarSimple(
-            brand="🏙️ New Jersey Consolidation Analysis",
+            brand="New Jersey Consolidation Analysis",
             brand_href="#",
             color="dark",
             dark=True,
@@ -103,7 +103,7 @@ class ImprovedNJConsolidationDashboard:
                     " with over 3.6 million people."
                 ], className="text-light"),
                 dbc.Alert([
-                    html.H5("🎯 Key Insight", className="alert-heading"),
+                    html.H5("Key Insight", className="alert-heading"),
                     "If Bergen, Essex, Hudson, Passaic, and Union counties were consolidated into one city, "
                     "it would rank 58th globally, ahead of Madrid, Buenos Aires, and Toronto."
                 ], color="info", className="border-info")
@@ -112,12 +112,12 @@ class ImprovedNJConsolidationDashboard:
         
         # Main content tabs
         tabs = dbc.Tabs([
-            dbc.Tab(label="🗺️ Maps", tab_id="maps"),
-            dbc.Tab(label="📊 Population Analysis", tab_id="population"),
-            dbc.Tab(label="🌍 World Rankings", tab_id="rankings"),
-            dbc.Tab(label="🏛️ County Breakdown", tab_id="counties"),
-            dbc.Tab(label="💰 Economic Impact", tab_id="economic"),
-            dbc.Tab(label="📋 Claims & Methodology", tab_id="claims")
+            dbc.Tab(label="Maps", tab_id="maps"),
+            dbc.Tab(label="Population Analysis", tab_id="population"),
+            dbc.Tab(label="World Rankings", tab_id="rankings"),
+            dbc.Tab(label="County Breakdown", tab_id="counties"),
+            dbc.Tab(label="Economic Impact", tab_id="economic"),
+            dbc.Tab(label="Claims & Methodology", tab_id="claims")
         ], id="main-tabs", active_tab="maps", className="nav-pills")
         
         # Content area
@@ -177,14 +177,9 @@ class ImprovedNJConsolidationDashboard:
                 dbc.Col([
                     dbc.Card([
                         dbc.CardHeader([
-                            html.H4("🗺️ Current Municipal Structure", className="text-light mb-0")
+                            html.H4("Current Municipal Structure", className="text-light mb-0")
                         ], className="bg-secondary"),
                         dbc.CardBody([
-                            html.P([
-                                "Interactive map showing current municipal boundaries using ",
-                                html.Strong("US Census Bureau TIGER/Line data", className="text-warning"),
-                                " that trace actual waterways, coastlines, and natural boundaries. Each municipality is color-coded by county."
-                            ], className="text-light"),
                             html.Iframe(
                                 srcDoc=open(self.tiger_creator.output_dir / 'tiger_municipal_boundaries_map.html', 'r').read(),
                                 style={"width": "100%", "height": "600px", "border": "none"}
@@ -196,14 +191,9 @@ class ImprovedNJConsolidationDashboard:
                 dbc.Col([
                     dbc.Card([
                         dbc.CardHeader([
-                            html.H4("🔄 Consolidation Scenarios", className="text-light mb-0")
+                            html.H4("Consolidation Scenarios", className="text-light mb-0")
                         ], className="bg-secondary"),
                         dbc.CardBody([
-                            html.P([
-                                "Map showing proposed consolidation scenarios using ",
-                                html.Strong("US Census Bureau TIGER/Line county boundaries", className="text-warning"),
-                                " that follow actual geographic features and interactive toggles."
-                            ], className="text-light"),
                             html.Iframe(
                                 srcDoc=open(self.tiger_creator.output_dir / 'tiger_consolidation_map.html', 'r').read(),
                                 style={"width": "100%", "height": "600px", "border": "none"}
@@ -221,7 +211,7 @@ class ImprovedNJConsolidationDashboard:
                 dbc.Col([
                     dbc.Card([
                         dbc.CardHeader([
-                            html.H4("📊 Population Comparison", className="text-light mb-0")
+                            html.H4("Population Comparison", className="text-light mb-0")
                         ], className="bg-secondary"),
                         dbc.CardBody([
                             dcc.Graph(figure=self.viz_creator.create_dark_population_chart())
@@ -255,7 +245,7 @@ class ImprovedNJConsolidationDashboard:
                 dbc.Col([
                     dbc.Card([
                         dbc.CardHeader([
-                            html.H4("🏛️ County Analysis", className="text-light mb-0")
+                            html.H4("County Analysis", className="text-light mb-0")
                         ], className="bg-secondary"),
                         dbc.CardBody([
                             dcc.Graph(figure=self._create_county_chart())

@@ -727,8 +727,8 @@ class TIGERBoundaryCreator:
                 row.geometry,
                 style_function=lambda x, color=county_color: {
                     'fillColor': color,
-                    'color': color,
-                    'weight': 2,
+                    'color': '#000000',  # Black outline
+                    'weight': 1.5,
                     'fillOpacity': 0.6
                 },
                 popup=folium.Popup(
@@ -736,9 +736,9 @@ class TIGERBoundaryCreator:
                     <div style='color: white; background: #2d2d2d; padding: 10px; border-radius: 5px; width: 250px;'>
                         <h4 style='color: {county_color}; margin: 0 0 5px 0;'>{row['NAME']}</h4>
                         <p style='margin: 2px 0;'><strong>County:</strong> {county_name}</p>
-                        <p style='margin: 2px 0;'><strong>FIPS Code:</strong> {row.get('PLACEFP', row.get('COUSUBFP', 'N/A'))}</p>
-                        <p style='margin: 2px 0;'><strong>Boundary Type:</strong> TIGER/Line Data</p>
-                        <p style='margin: 2px 0;'><strong>Features:</strong> Real geographic boundaries</p>
+                        <p style='margin: 2px 0;'><strong>Population:</strong> {row['population_2020']:,}</p>
+                        <p style='margin: 2px 0;'><strong>Area:</strong> {row['area_sq_miles']:.1f} sq mi</p>
+                        <p style='margin: 2px 0;'><strong>Density:</strong> {row['population_density']:.0f} people/sq mi</p>
                     </div>
                     """,
                     max_width=300
@@ -748,16 +748,16 @@ class TIGERBoundaryCreator:
         # Add legend
         legend_html = '''
         <div style="position: fixed; 
-                    bottom: 50px; left: 50px; width: 200px; height: 120px; 
+                    bottom: 50px; left: 50px; width: 220px; height: 160px; 
                     background-color: #2d2d2d; border: 2px solid #666666; 
-                    z-index:9999; font-size:14px; color: white; padding: 10px;
+                    z-index:9999; font-size:14px; color: white; padding: 12px;
                     border-radius: 5px;">
-        <h4 style="margin: 0 0 10px 0; color: #00d4ff;">TIGER/Line Municipal Boundaries</h4>
-        <p style="margin: 2px 0;"><span style="color: #00d4ff;">●</span> Bergen</p>
-        <p style="margin: 2px 0;"><span style="color: #ff6b35;">●</span> Essex</p>
-        <p style="margin: 2px 0;"><span style="color: #00ff88;">●</span> Hudson</p>
-        <p style="margin: 2px 0;"><span style="color: #ffb347;">●</span> Passaic</p>
-        <p style="margin: 2px 0;"><span style="color: #9d4edd;">●</span> Union</p>
+        <h4 style="margin: 0 0 12px 0; color: #00d4ff; font-size: 16px;">Municipal Boundaries</h4>
+        <p style="margin: 4px 0;"><span style="color: #00d4ff; font-size: 16px;">●</span> Bergen</p>
+        <p style="margin: 4px 0;"><span style="color: #ff6b35; font-size: 16px;">●</span> Essex</p>
+        <p style="margin: 4px 0;"><span style="color: #00ff88; font-size: 16px;">●</span> Hudson</p>
+        <p style="margin: 4px 0;"><span style="color: #ffb347; font-size: 16px;">●</span> Passaic</p>
+        <p style="margin: 4px 0;"><span style="color: #9d4edd; font-size: 16px;">●</span> Union</p>
         </div>
         '''
         m.get_root().html.add_child(folium.Element(legend_html))
@@ -778,6 +778,14 @@ class TIGERBoundaryCreator:
         if counties_gdf is None:
             print("Could not load TIGER/Line county data")
             return None
+        
+        # Calculate county statistics from comprehensive municipalities data
+        county_stats = self.comprehensive_municipalities_df.groupby('county').agg({
+            'population_2020': 'sum',
+            'area_sq_miles': 'sum',
+            'municipality': 'count'
+        }).reset_index()
+        county_stats['population_density'] = county_stats['population_2020'] / county_stats['area_sq_miles']
         
         # Create the map
         center_lat = counties_gdf.geometry.centroid.y.mean()
@@ -806,6 +814,16 @@ class TIGERBoundaryCreator:
         for idx, row in counties_gdf.iterrows():
             county_name = county_fips_to_name.get(row['COUNTYFP'], 'Unknown')
             
+            # Get county statistics
+            county_data = county_stats[county_stats['county'] == county_name]
+            if not county_data.empty:
+                pop = county_data.iloc[0]['population_2020']
+                area = county_data.iloc[0]['area_sq_miles']
+                density = county_data.iloc[0]['population_density']
+                muni_count = county_data.iloc[0]['municipality']
+            else:
+                pop = area = density = muni_count = 0
+            
             # Convert geometry to GeoJSON
             # Use geometry directly - no need to convert to JSON
             
@@ -814,16 +832,19 @@ class TIGERBoundaryCreator:
                 row.geometry,
                 style_function=lambda x: {
                     'fillColor': '#00d4ff',
-                    'color': '#00d4ff',
-                    'weight': 3,
+                    'color': '#000000',  # Black outline
+                    'weight': 2,
                     'fillOpacity': 0.3
                 },
                 popup=folium.Popup(
                     f"""
                     <div style='color: white; background: #2d2d2d; padding: 15px; border-radius: 5px; text-align: center;'>
                         <h4 style='color: #00d4ff; margin: 0 0 10px 0;'>{county_name} County</h4>
-                        <p style='margin: 5px 0;'>Part of 5-County Consolidation</p>
-                        <p style='margin: 5px 0;'>TIGER/Line boundaries</p>
+                        <p style='margin: 5px 0;'><strong>Population:</strong> {pop:,}</p>
+                        <p style='margin: 5px 0;'><strong>Area:</strong> {area:.1f} sq mi</p>
+                        <p style='margin: 5px 0;'><strong>Density:</strong> {density:.0f} people/sq mi</p>
+                        <p style='margin: 5px 0;'><strong>Municipalities:</strong> {muni_count}</p>
+                        <p style='margin: 10px 0 5px 0; font-size: 12px; color: #00d4ff;'>Part of 5-County Consolidation</p>
                     </div>
                     """,
                     max_width=300
@@ -836,6 +857,16 @@ class TIGERBoundaryCreator:
             if row['COUNTYFP'] in three_county_fips:
                 county_name = county_fips_to_name.get(row['COUNTYFP'], 'Unknown')
                 
+                # Get county statistics
+                county_data = county_stats[county_stats['county'] == county_name]
+                if not county_data.empty:
+                    pop = county_data.iloc[0]['population_2020']
+                    area = county_data.iloc[0]['area_sq_miles']
+                    density = county_data.iloc[0]['population_density']
+                    muni_count = county_data.iloc[0]['municipality']
+                else:
+                    pop = area = density = muni_count = 0
+                
                 # Convert geometry to GeoJSON
                 # Use geometry directly - no need to convert to JSON
                 
@@ -844,16 +875,19 @@ class TIGERBoundaryCreator:
                     row.geometry,
                     style_function=lambda x: {
                         'fillColor': '#00ff88',
-                        'color': '#00ff88',
-                        'weight': 3,
+                        'color': '#000000',  # Black outline
+                        'weight': 2,
                         'fillOpacity': 0.4
                     },
                     popup=folium.Popup(
                         f"""
                         <div style='color: white; background: #2d2d2d; padding: 15px; border-radius: 5px; text-align: center;'>
                             <h4 style='color: #00ff88; margin: 0 0 10px 0;'>{county_name} County</h4>
-                            <p style='margin: 5px 0;'>Part of 3-County Core</p>
-                            <p style='margin: 5px 0;'>TIGER/Line boundaries</p>
+                            <p style='margin: 5px 0;'><strong>Population:</strong> {pop:,}</p>
+                            <p style='margin: 5px 0;'><strong>Area:</strong> {area:.1f} sq mi</p>
+                            <p style='margin: 5px 0;'><strong>Density:</strong> {density:.0f} people/sq mi</p>
+                            <p style='margin: 5px 0;'><strong>Municipalities:</strong> {muni_count}</p>
+                            <p style='margin: 10px 0 5px 0; font-size: 12px; color: #00ff88;'>Part of 3-County Core</p>
                         </div>
                         """,
                         max_width=300
@@ -872,7 +906,7 @@ class TIGERBoundaryCreator:
             location=[center_lat, center_lon],
             popup="""
             <div style='color: white; background: #2d2d2d; padding: 15px; border-radius: 5px; text-align: center;'>
-                <h3 style='color: #00d4ff; margin: 0 0 10px 0;'>🏙️ Greater Jersey City</h3>
+                <h3 style='color: #00d4ff; margin: 0 0 10px 0;'>Greater Jersey City</h3>
                 <p style='margin: 5px 0;'><strong>Population:</strong> 3,610,711</p>
                 <p style='margin: 5px 0;'><strong>US Rank:</strong> 3rd largest city</p>
                 <p style='margin: 5px 0;'><strong>Boundaries:</strong> TIGER/Line Data</p>
