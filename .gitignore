@@ -147,6 +147,7 @@ Thumbs.db
 # Project specific
 data/raw/
 data/processed/
+data/tiger_data/
 *.csv
 *.xlsx
 *.xls
@@ -155,6 +156,13 @@ data/processed/
 *.pickle
 *.h5
 *.hdf5
+*.zip
+*.shp
+*.shx
+*.dbf
+*.prj
+*.cpg
+*.xml
 
 # Logs
 logs/
