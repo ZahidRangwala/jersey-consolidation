@@ -14,7 +14,6 @@ import zipfile
 from pathlib import Path
 from shapely.geometry import Polygon, Point
 import geopandas as gpd
-import os
 
 class TIGERBoundaryCreator:
     """Creates maps using US Census Bureau TIGER/Line municipal boundary data"""

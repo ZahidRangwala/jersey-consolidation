@@ -114,13 +114,11 @@ async def get_economic_impact():
 async def get_municipal_boundaries_map():
     """Generate and return municipal boundaries map"""
     try:
-        # Use the improved municipalities map which has proper boundaries
-        map_path = Path("../visualizations/improved_municipalities_map.html")
+        # Use the TIGER municipalities map which has proper boundaries
+        map_path = Path("../visualizations/tiger_municipal_boundaries_map.html")
         if not map_path.exists():
-            # Fallback to tiger map if improved doesn't exist
-            map_path = Path("../visualizations/tiger_municipal_boundaries_map.html")
-            if not map_path.exists():
-                tiger_creator.create_tiger_municipalities_map()
+            # Generate TIGER map if it doesn't exist
+            tiger_creator.create_tiger_municipalities_map()
         
         # Return the map HTML content
         with open(map_path, 'r') as f:
@@ -134,19 +132,11 @@ async def get_municipal_boundaries_map():
 async def get_consolidation_map():
     """Generate and return consolidation scenarios map"""
     try:
-        # Use the real consolidation map which has both proper county boundaries and working 3-county toggle
-        map_path = Path("../visualizations/real_consolidation_map.html")
+        # Use the TIGER consolidation map which has proper county boundaries and working 3-county toggle
+        map_path = Path("../visualizations/tiger_consolidation_map.html")
         if not map_path.exists():
-            # Fallback to other available maps
-            fallback_paths = [
-                "../visualizations/real_geographic_consolidation_map.html",
-                "../visualizations/improved_consolidation_map.html",
-                "../visualizations/tiger_consolidation_map.html"
-            ]
-            for fallback_path in fallback_paths:
-                if Path(fallback_path).exists():
-                    map_path = Path(fallback_path)
-                    break
+            # Generate TIGER consolidation map if it doesn't exist
+            tiger_creator.create_tiger_consolidation_map()
         
         # Return the map HTML content
         with open(map_path, 'r') as f:

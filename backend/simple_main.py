@@ -107,28 +107,14 @@ async def get_municipal_boundaries_map():
                 map_html = f.read()
             return {"html": map_html}
         else:
-            # Fallback to other available maps
-            fallback_paths = [
-                "../visualizations/real_geographic_municipal_map.html",
-                "../visualizations/real_municipal_boundaries_map.html",
-                "../visualizations/improved_municipalities_map.html"
-            ]
-            
-            for fallback_path in fallback_paths:
-                if Path(fallback_path).exists():
-                    with open(fallback_path, 'r', encoding='utf-8') as f:
-                        map_html = f.read()
-                    return {"html": map_html}
-            
-            # If no maps found, return placeholder
+            # Return error message if TIGER map not found
             return {
                 "html": """
                 <div style="width: 100%; height: 600px; background: #2d2d2d; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; border-radius: 8px;">
                     <div style="text-align: center;">
-                        <h3 style="color: #00d4ff; margin-bottom: 20px;">Municipal Boundaries Map</h3>
-                        <p>Map not found. Please generate maps first.</p>
-                        <p style="color: #ff6b35; margin-top: 20px;">Your existing Dash dashboard is available at:</p>
-                        <a href="http://localhost:8053" style="color: #00d4ff; text-decoration: none; font-weight: bold;">http://localhost:8053</a>
+                        <h3 style="color: #ff6b35; margin-bottom: 20px;">Municipal Boundaries Map Not Found</h3>
+                        <p>TIGER/Line municipal boundaries map not found.</p>
+                        <p style="color: #00d4ff; margin-top: 20px;">Please generate maps first using the TIGER boundary creator.</p>
                     </div>
                 </div>
                 """
@@ -140,8 +126,7 @@ async def get_municipal_boundaries_map():
                 <div style="text-align: center;">
                     <h3 style="color: #ff6b35; margin-bottom: 20px;">Error Loading Map</h3>
                     <p>Error: {str(e)}</p>
-                    <p style="color: #00d4ff; margin-top: 20px;">Your existing Dash dashboard is available at:</p>
-                    <a href="http://localhost:8053" style="color: #00d4ff; text-decoration: none; font-weight: bold;">http://localhost:8053</a>
+                    <p style="color: #00d4ff; margin-top: 20px;">Please check the TIGER boundary creator configuration.</p>
                 </div>
             </div>
             """
@@ -158,28 +143,14 @@ async def get_consolidation_map():
                 map_html = f.read()
             return {"html": map_html}
         else:
-            # Fallback to other available consolidation maps
-            fallback_paths = [
-                "../visualizations/real_consolidation_map.html",
-                "../visualizations/real_geographic_consolidation_map.html",
-                "../visualizations/improved_consolidation_map.html"
-            ]
-            
-            for fallback_path in fallback_paths:
-                if Path(fallback_path).exists():
-                    with open(fallback_path, 'r', encoding='utf-8') as f:
-                        map_html = f.read()
-                    return {"html": map_html}
-            
-            # If no maps found, return placeholder
+            # Return error message if TIGER consolidation map not found
             return {
                 "html": """
                 <div style="width: 100%; height: 600px; background: #2d2d2d; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; border-radius: 8px;">
                     <div style="text-align: center;">
-                        <h3 style="color: #ff6b35; margin-bottom: 20px;">Consolidation Scenarios Map</h3>
-                        <p>Map not found. Please generate maps first.</p>
-                        <p style="color: #00d4ff; margin-top: 20px;">Your existing Dash dashboard is available at:</p>
-                        <a href="http://localhost:8053" style="color: #00d4ff; text-decoration: none; font-weight: bold;">http://localhost:8053</a>
+                        <h3 style="color: #ff6b35; margin-bottom: 20px;">Consolidation Scenarios Map Not Found</h3>
+                        <p>TIGER/Line consolidation scenarios map not found.</p>
+                        <p style="color: #00d4ff; margin-top: 20px;">Please generate maps first using the TIGER boundary creator.</p>
                     </div>
                 </div>
                 """
@@ -191,8 +162,7 @@ async def get_consolidation_map():
                 <div style="text-align: center;">
                     <h3 style="color: #ff6b35; margin-bottom: 20px;">Error Loading Map</h3>
                     <p>Error: {str(e)}</p>
-                    <p style="color: #00d4ff; margin-top: 20px;">Your existing Dash dashboard is available at:</p>
-                    <a href="http://localhost:8053" style="color: #00d4ff; text-decoration: none; font-weight: bold;">http://localhost:8053</a>
+                    <p style="color: #00d4ff; margin-top: 20px;">Please check the TIGER boundary creator configuration.</p>
                 </div>
             </div>
             """
